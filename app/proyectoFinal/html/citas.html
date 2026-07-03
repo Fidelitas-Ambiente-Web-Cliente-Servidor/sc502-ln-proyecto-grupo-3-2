@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agendamiento de citas</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Agendamiento de citas</h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="admin-dashboard.html">Dashboard administrativo</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Formulario para agendar cita -->
+        <section class="bloque">
+            <h2>Nueva cita</h2>
+            <form id="form-cita">
+                <div class="campo">
+                    <label for="adulto">Adulto mayor</label>
+                    <input type="text" id="adulto" required>
+                </div>
+
+                <div class="campo">
+                    <label for="familiar">Familiar responsable</label>
+                    <input type="text" id="familiar" required>
+                </div>
+
+                <div class="campo">
+                    <label for="fecha">Fecha</label>
+                    <input type="date" id="fecha" required>
+                </div>
+
+                <div class="campo">
+                    <label for="hora">Hora</label>
+                    <input type="time" id="hora" required>
+                </div>
+
+                <div class="campo">
+                    <label for="motivo">Motivo de la visita</label>
+                    <textarea id="motivo" rows="3" required></textarea>
+                </div>
+
+                <button type="submit">Agendar cita</button>
+            </form>
+        </section>
+
+        <!-- Tabla para visualizar citas -->
+        <section class="bloque">
+            <h2>Mis citas agendadas</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Adulto mayor</th>
+                        <th>Familiar</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Motivo</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-citas">
+                    <!-- JavaScript insertará filas aquí -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="../js/citas.js"></script>
+</body>
+</html>

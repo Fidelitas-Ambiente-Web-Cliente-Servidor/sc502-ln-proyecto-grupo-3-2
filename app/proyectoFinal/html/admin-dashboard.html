@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard administrativo</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Dashboard administrativo - Citas</h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="citas.html">Agendar citas</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Resumen de citas -->
+        <section class="bloque resumen">
+            <h2>Resumen</h2>
+            <p>Total de citas: <span id="total-citas">0</span></p>
+            <p>Pendientes: <span id="citas-pendientes">0</span></p>
+            <p>Confirmadas: <span id="citas-confirmadas">0</span></p>
+            <p>Canceladas: <span id="citas-canceladas">0</span></p>
+        </section>
+
+        <!-- Control de citas -->
+        <section class="bloque">
+            <h2>Control de citas</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Adulto mayor</th>
+                        <th>Familiar</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Motivo</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-admin-citas">
+                    <!-- JavaScript insertará filas aquí -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="../js/admin-dashboard.js"></script>
+</body>
+</html>
