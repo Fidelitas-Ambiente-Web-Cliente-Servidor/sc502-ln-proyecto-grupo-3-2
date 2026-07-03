@@ -1,0 +1,4 @@
+1. En la terminal
+2. docker-compose up -d --build    
+3. Abrimos docker desktop
+4. Navegador abrir: http://localhost:8080/
