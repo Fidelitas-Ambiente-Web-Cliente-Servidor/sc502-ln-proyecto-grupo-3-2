@@ -10,7 +10,7 @@
         <h1>Agendamiento de citas</h1>
         <nav>
             <a href="index.html">Inicio</a>
-            <a href="admin-dashboard.html">Dashboard administrativo</a>
+            <a href="admin-dashboard.php">Dashboard administrativo</a>
         </nav>
     </header>
 
@@ -18,57 +18,38 @@
         <!-- Formulario para agendar cita -->
         <section class="bloque">
             <h2>Nueva cita</h2>
-            <form id="form-cita">
-                <div class="campo">
-                    <label for="adulto">Adulto mayor</label>
-                    <input type="text" id="adulto" required>
-                </div>
+ <form action="../php/citas.php" method="POST">
+    <div class="campo">
+        <label for="adulto_id">ID del adulto mayor</label>
+        <input type="number" id="adulto_id" name="adulto_id" required>
+    </div>
 
-                <div class="campo">
-                    <label for="familiar">Familiar responsable</label>
-                    <input type="text" id="familiar" required>
-                </div>
+    <div class="campo">
+        <label for="familiar_id">ID del familiar</label>
+        <input type="number" id="familiar_id" name="familiar_id" required>
+    </div>
 
-                <div class="campo">
-                    <label for="fecha">Fecha</label>
-                    <input type="date" id="fecha" required>
-                </div>
+    <div class="campo">
+        <label for="fecha">Fecha</label>
+        <input type="date" id="fecha" name="fecha" required>
+    </div>
 
-                <div class="campo">
-                    <label for="hora">Hora</label>
-                    <input type="time" id="hora" required>
-                </div>
+    <div class="campo">
+        <label for="hora">Hora</label>
+        <input type="time" id="hora" name="hora" required>
+    </div>
 
-                <div class="campo">
-                    <label for="motivo">Motivo de la visita</label>
-                    <textarea id="motivo" rows="3" required></textarea>
-                </div>
+    <div class="campo">
+        <label for="motivo">Motivo de la visita</label>
+        <textarea id="motivo" name="motivo" rows="3" required></textarea>
+    </div>
 
-                <button type="submit">Agendar cita</button>
-            </form>
+    <button type="submit">Agendar cita</button>
+</form>
         </section>
 
-        <!-- Tabla para visualizar citas -->
-        <section class="bloque">
-            <h2>Mis citas agendadas</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Adulto mayor</th>
-                        <th>Familiar</th>
-                        <th>Fecha</th>
-                        <th>Hora</th>
-                        <th>Motivo</th>
-                        <th>Estado</th>
-                    </tr>
-                </thead>
-                <tbody id="tabla-citas">
-                    <!-- JavaScript insertará filas aquí -->
-                </tbody>
-            </table>
-        </section>
+        <!-- Si quieres, aquí puedes dejar la tabla del frontend con JS,
+             pero la parte importante para la BD ya está con el formulario -->
     </main>
-
-    <script src="../js/citas.js"></script>
 </body>
 </html>

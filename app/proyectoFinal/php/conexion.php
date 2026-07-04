@@ -1,12 +1,14 @@
 <?php
-$host = "localhost";
-$usuario = "Pruebas";         
-$password = "Pruebas123";     
-$bd = "centro_diurno";        
+$host = "db";
+$bd   = "centro_diurno";
+$usuario = "Pruebas";
+$password = "Pruebas123";
 
-$conexion = new mysqli($host, $usuario, $password, $bd);
-
-if ($conexion->connect_error) {
-    die("Error de conexión: " . $conexion->connect_error);
+try {
+    $dsn = "mysql:host=$host;dbname=$bd;charset=utf8";
+    $conexion = new PDO($dsn, $usuario, $password);
+    $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Error de conexión: " . $e->getMessage());
 }
 ?>

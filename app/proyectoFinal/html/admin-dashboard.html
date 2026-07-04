@@ -15,19 +15,17 @@
     </header>
 
     <main>
-        <!-- Resumen de citas -->
         <section class="bloque resumen">
             <h2>Resumen</h2>
             <p>Total de citas: <span id="total-citas">0</span></p>
-            <p>Pendientes: <span id="citas-pendientes">0</span></p>
-            <p>Confirmadas: <span id="citas-confirmadas">0</span></p>
-            <p>Canceladas: <span id="citas-canceladas">0</span></p>
+            <p>Pendientes: <span id="pendientes">0</span></p>
+            <p>Confirmadas: <span id="confirmadas">0</span></p>
+            <p>Canceladas: <span id="canceladas">0</span></p>
         </section>
 
-        <!-- Control de citas -->
         <section class="bloque">
             <h2>Control de citas</h2>
-            <table>
+            <table id="tabla-citas">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -40,8 +38,8 @@
                         <th>Acciones</th>
                     </tr>
                 </thead>
-                <tbody id="tabla-admin-citas">
-                    <!-- JavaScript insertará filas aquí -->
+                <tbody>
+                    <!-- JS rellenará aquí -->
                 </tbody>
             </table>
         </section>

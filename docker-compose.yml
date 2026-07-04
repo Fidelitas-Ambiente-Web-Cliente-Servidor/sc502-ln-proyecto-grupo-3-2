@@ -1,39 +1,41 @@
 services:
   web:
-    image: php:8.2-apache   
-    container_name: php-apache-demo
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: php-apache-proyecto
     ports:
-      - "8080:80"
+      - "8081:80"
     volumes:
-      - ./app:/var/www/html
+      - ./app/proyectoFinal:/var/www/html
     depends_on:
       - db
 
   db:
     image: mysql:8.0
-    container_name: mysql-demo
+    container_name: mysql-proyecto
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: appdb
-      MYSQL_USER: appuser
-      MYSQL_PASSWORD: apppass
+      MYSQL_DATABASE: centro_diurno
+      MYSQL_USER: Pruebas
+      MYSQL_PASSWORD: Pruebas123
+    ports:
+      - "3308:3306"
     volumes:
       - db_data:/var/lib/mysql
-    ports:
-      - "3307:3306"
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin-demo
+    container_name: phpmyadmin-proyecto
     depends_on:
       - db
     environment:
       PMA_HOST: db
-      PMA_USER: appuser
-      PMA_PASSWORD: apppass
+      PMA_USER: Pruebas
+      PMA_PASSWORD: Pruebas123
     ports:
-      - "8082:80"   # phpMyAdmin -> http://localhost:8082
+      - "8083:80"
 
 volumes:
   db_data:
