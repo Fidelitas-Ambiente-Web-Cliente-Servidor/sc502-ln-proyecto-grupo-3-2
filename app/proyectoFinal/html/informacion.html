@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Centro Diurno Vida Activa</title>
+    <link rel="stylesheet" href="../css/informacion.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__brand">
+            <span class="header__title">Vida Activa</span>
+        </div>
+        <nav class="nav" id="mainNav">
+            <a class="nav__link" href="index.html">Inicio</a>
+            <a class="nav__link" href="informacion.html">Información de centros de cuido</a>
+            <a class="nav__link" href="#servicios">Servicios y requisitos</a>
+            <a class="nav__link" href="contacto.html">Contacto</a>
+            <a class="nav__link nav__link--cta" href="login.html">Iniciar sesión</a>
+        </nav>
+    </header>
+
+
+
+    <main>
+        <!-- Sección de Citas Informativas (Hero) -->
+        <section class="hero">
+            <div class="hero__content">
+                <span class="hero__eyebrow">Modulo de información de citas</span>
+                <h2 class="hero__title">Citas informativas</h2>
+                <p class="hero__text">Reserve su cita informativa gratuita con un especialista de nuestra red de cuido
+                    para ayudarle con toda la información necesaria.</p>
+            </div>
+        </section>
+
+        <!-- Sección de Servicios disponibles -->
+        <section class="bloque">
+            <h2>Modalidades de citas que mantenemos</h2>
+
+            <ul>
+                <!-- Tarjeta Servicio 1 -->
+                <li>
+                    <article class="service-card">
+                        <div>
+                            <h4>Cita informativa presencial</h4>
+                            <p class="service-meta service-price">Reservación gratuita</p>
+                            <p class="service-meta">Duración: 1 h</p>
+                        </div>
+                        <form>
+                            <button type="submit" class="btn btn--primary">Solicitud de reserva</button>
+                        </form>
+                    </article>
+                </li>
+
+                <!-- Tarjeta Servicio 2 -->
+                <li>
+                    <article class="service-card">
+                        <div>
+                            <h4>Cita informativa en línea</h4>
+                            <p class="service-meta service-price">Reservación gratuita</p>
+                            <p class="service-meta">Duración: 1 h</p>
+                        </div>
+                        <form>
+                            <button type="submit" class="btn btn--primary">Solicitud de reserva</button>
+                        </form>
+                    </article>
+                </li>
+            </ul>
+
+
+        </section>
+    </main>
+
+    <!-- Sección de Ubicación (Google Maps) -->
+    <section class="bloque-mapa">
+        <div class="mapa-info">
+            <h2>Centros de cuido cerca de su ubicación</h2>
+            <p class="mapa-texto">Nos encontramos en la busqueda de los centros de cuido más cercanos a su familia, el
+                estar con nuestros adultos mayores el mayor tiempo es nuestra prioridad.</p>
+            <p class="mapa-direccion"><strong>Si quieres empezar el proceso de inscripcion contactanos</strong></p>
+            <a href="contacto.html" class="btn-contacto">Contactar ahora</a>
+            <a href="https://maps.google.com/?q=Hogar+de+Ancianos+Santa+Marta+San+Pedro+Montes+de+Oca" target="_blank"
+                class="btn-mapa">Abrir en Google Maps</a>
+            
+        </div>
+        <div class="mapa-contenedor">
+            <!-- Mapa interactivo incrustado -->
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1413.7538979842654!2d-84.03308711554945!3d9.933534784378432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e3f423000001%3A0xf02698029f6969e3!2sAsilo%20de%20Ancianos%20de%20Santa%20Marta!5e0!3m2!1ses!2scr!4v1783267559766!5m2!1ses!2scr"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin" width="100%" height="100%" style="border:0;"
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- Footer -->
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Centro Diurno Vida Activa</h4>
+                <p>Brindamos cuidado profesional, calidez humana y bienestar integral para adultos mayores y sus
+                    familias.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <div class="info-item">San Jose, Costa Rica</div>
+                <div class="info-item">Tel: 2200-0000</div>
+                <div class="info-item">info@vidaactiva.cr</div>
+                <div class="info-item">Lun - Vie, 7:00am - 5:00pm</div>
+            </div>
+            <div class="footer-col">
+                <h4>Navegacion</h4>
+                <a href="../html/index.html">Inicio</a>
+                <a href="../html/inscripcion.html">Inscripcion</a>
+                <a href="actividades.php">Actividades</a>
+                <a href="../html/citas.html">Citas</a>
+            </div>
+            <div class="footer-col">
+                <h4>Redes Sociales</h4>
+                <div class="redes">
+                    <a href="#" class="red-social">Facebook</a>
+                    <a href="#" class="red-social">Instagram</a>
+                    <a href="#" class="red-social">WhatsApp</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Centro Diurno Vida Activa &mdash; San Jose, Costa Rica. Todos los derechos reservados.
+        </div>
+    </footer>
+    <script src="../js/index.js"></script>
+</body>
