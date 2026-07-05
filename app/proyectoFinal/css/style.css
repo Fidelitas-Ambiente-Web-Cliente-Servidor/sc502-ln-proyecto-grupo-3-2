@@ -131,3 +131,24 @@ th {
         margin-right: 1rem;
     }
 }
+
+/*Detalle de color del footer*/
+.main-footer {
+            background-color: #003b73; 
+            text-align: center;
+            padding: 1.5rem 1rem;
+            font-size: 0.9rem;
+            border-top: 4px solid #E65F2B;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            opacity: 0.9; 
+        }
+
+        .footer-content strong {
+            color: #E65F2B; 
+            font-weight: 600;
+        }

@@ -1,0 +1,348 @@
+:root {
+    --color-primary: #003b73;        /* Azul institucional */
+    --color-orange: #E65F2B;         /* Naranja de acento */
+    --color-orange-hover: #CB4E1E;   /* Naranja oscuro para hovers */
+    --color-bg-light: #f4f7fb;       /* Fondo general suave */
+    --color-text-dark: #333333;      /* Texto principal */
+    --color-text-muted: #666666;     /* Texto secundario */
+    --radius: 8px;
+}
+
+
+/* Fondo suave y tipografía legible */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7fb;
+    color: #333;
+}
+
+/* Encabezado con azul institucional */
+header {
+    background-color: #003b73;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+/* Navegación */
+nav a {
+    color: #ffcc4d;
+    text-decoration: none;
+    margin-left: 1rem;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Contenido principal */
+main {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Bloques de contenido */
+.bloque {
+    background-color: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+.bloque h2 {
+    color: #003b73;
+    margin-top: 0;
+}
+
+/* Campos de formulario */
+.campo {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+    font-size: 1rem;
+}
+
+input, textarea, select {
+    padding: 0.6rem;
+    font-size: 1rem;
+    border-radius: 6px;
+        border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+
+/* Caja de contenido (limita el ancho para que el texto sea fácil de leer) */
+.hero__content {
+    max-width: 800px;
+}
+
+
+.hero__eyebrow {
+    display: block;
+    color: #E65F2B; 
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+/* Título principal */
+.hero__title {
+    font-size: clamp(2rem, 5vw, 3.5rem); 
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;         
+    background-color: #ffffff; 
+    text-align: center;
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Caja que limita el ancho del contenido para facilitar la lectura */
+.hero__content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Texto complementario */
+.hero__text {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    opacity: 0.85; 
+    margin-bottom: 2.5rem;
+}
+
+/* Base del botón */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold; 
+    font-family: var(--font-body);
+    color: #FFFFFF;
+    background-color: #E65F2B;
+    border: 2px solid transparent;
+    border-radius: var(--radius-sm, 8px);
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+/* Efectos Globales (Hover y Click) */
+.btn:hover {
+    background-color: #CB4E1E; 
+    color: #FFFFFF; 
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(230, 95, 43, 0.2);
+}
+
+/* Botón Principal (Mismo estilo base) */
+.btn--primary {
+    background-color: #E65F2B;
+    color: #FFFFFF;
+}
+
+/* Botón Secundario (Contactar al centro) */
+.btn--ghost {
+    background-color: transparent;
+    border-color: #E65F2B; 
+    color: #E65F2B; 
+    margin-left: var(--space-2, 1rem);
+}
+
+.btn--ghost:hover {
+    background-color: #E65F2B;
+    color: #FFFFFF;
+}
+
+
+.section .btn--ghost,
+.hero .btn--ghost {
+    border-color: #E65F2B;
+    color: #E65F2B;
+}
+
+.section .btn--ghost:hover,
+.hero .btn--ghost:hover {
+    background-color: #E65F2B;
+    color: #FFFFFF;
+}
+
+
+/*FOOTER */
+.footer {
+    background: #002855;
+    color: rgba(255,255,255,0.78);
+    padding: 3rem 2rem 1.5rem;
+    margin-top: 3rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    max-width: 1050px;
+    margin: 0 auto 2rem;
+}
+
+.footer-col h4 {
+    color: var(--amarillo);
+    font-size: 0.85rem;
+    margin: 0 0 1rem 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-col p, .footer-col a {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.62);
+    margin: 0.4rem 0;
+    display: block;
+    text-decoration: none;
+    line-height: 1.7;
+}
+
+.footer-col a:hover {
+    color: var(--amarillo);
+}
+
+.footer-col .info-item {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.62);
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.redes {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.red-social {
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.78);
+    padding: 0.4rem 0.9rem;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    font-weight: 500;
+    border: 1px solid rgba(255,255,255,0.10);
+}
+
+.red-social:hover {
+    background: var(--amarillo);
+    color: var(--azul);
+    border-color: var(--amarillo);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 1.2rem;
+    text-align: center;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.35);
+    max-width: 1050px;
+    margin: 0 auto;
+}
+
+
+/* --- SECCIÓN ACCESOS RÁPIDOS --- */
+
+/* Estilo base del contenedor del bloque */
+.bloque {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.bloque h2 {
+    color: #003b73; 
+    font-size: 1.4rem;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #f4f7fb;
+    padding-bottom: 0.5rem;
+}
+
+/* Estilizamos la lista para que actúe como un contenedor de tarjetas */
+.bloque ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 1rem; 
+    flex-wrap: wrap; 
+}
+
+/* Cada elemento de la lista se convierte en una columna flexible */
+.bloque li {
+    flex: 1;
+    min-width: 250px; 
+}
+
+/* Estilo de los enlaces convertidos en tarjetas interactivas */
+.bloque li a {
+    display: block;
+    padding: 1.25rem 1.5rem;
+    background-color: #f8f9fa; 
+    color: #003b73; 
+    text-decoration: none; 
+    font-weight: 600;
+    font-size: 1.05rem;
+    border-left: 4px solid #E65F2B;
+    border-radius: 6px;
+    box-sizing: border-box;
+    
+    /* Transición suave para los efectos visuales */
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Efectos al pasar el mouse por encima de cada acceso rápido */
+.bloque li a:hover {
+    background-color: #ffffff;
+    color: #E65F2B; 
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 12px rgba(0, 59, 115, 0.08); 
+}
+
+/* Efecto activo al hacer clic */
+.bloque li a:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 59, 115, 0.04);
+}

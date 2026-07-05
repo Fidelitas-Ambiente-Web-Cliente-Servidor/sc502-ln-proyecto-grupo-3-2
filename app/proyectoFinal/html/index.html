@@ -3,28 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Centro Diurno Vida Activa</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
-    <header>
-        <h1>Centro Diurno Vida Activa</h1>
-        <nav>
-            <!-- Links generales del sistema (los completan tus compas) -->
-            <a href="info-centro.html">Información del centro</a>
-            <a href="servicios.html">Servicios y requisitos</a>
-            <a href="contacto.html">Contacto</a>
-            <a href="login.html">Iniciar sesión</a>
+    <header class="header">
+        <div class="header__brand">
+            <span class="header__title">Vida Activa</span>
+        </div>
+        <nav class="nav" id="mainNav">
+            <a class="nav__link" href="#inicio">Inicio</a>
+            <a class="nav__link" href="#info-centro">Información del centro</a>
+            <a class="nav__link" href="#servicios">Servicios y requisitos</a>
+            <a class="nav__link" href="contacto.html">Contacto</a>
+            <a class="nav__link nav__link--cta" href="login.html">Iniciar sesión</a>
         </nav>
     </header>
 
     <main>
-        <section class="bloque">
-            <h2>Bienvenido al sistema web</h2>
-            <p>
-                Esta aplicación permite a las familias y al personal administrativo
-                gestionar la información del centro diurno, inscripciones, actividades
-                y visitas de los adultos mayores.
-            </p>
+ <section id="inicio" class="hero">
+            <div class="hero__content">
+                <span class="hero__eyebrow">Red de centros diurnos para el cuidado de personas adultas mayores</span>
+                <h1 class="hero__title">Cuido, compañía y actividad,<br>todos los días.</h1>
+                <p class="hero__text">
+                    Vida Activa acompaña a su familiar adulto mayor con atención,
+                    programas de actividades y comunicación constante con el
+                    personal de los centros de cuido, sin necesidad de llamadas ni trámites
+                    presenciales; asegurando el bienestar de la población adulta mayor.
+                </p>
+                <div class="hero__actions">
+                    <div class="hero__figure" id="contenido"></div>
+                    <a href="#servicios" class="btn btn--primary">Ver servicios</a>
+                    <a href="#contacto" class="btn btn--ghost">Contactar al centro</a>
+                    
+                </div>
+            </div>
         </section>
 
         <section class="bloque">
@@ -35,5 +47,40 @@
             </ul>
         </section>
     </main>
+    
+
+<footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Centro Diurno Vida Activa</h4>
+                <p>Brindamos cuidado profesional, calidez humana y bienestar integral para adultos mayores y sus familias.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <div class="info-item">San Jose, Costa Rica</div>
+                <div class="info-item">Tel: 2200-0000</div>
+                <div class="info-item">info@vidaactiva.cr</div>
+                <div class="info-item">Lun - Vie, 7:00am - 5:00pm</div>
+            </div>
+            <div class="footer-col">
+                <h4>Navegacion</h4>
+                <a href="../html/index.html">Inicio</a>
+                <a href="../html/inscripcion.html">Inscripcion</a>
+                <a href="actividades.php">Actividades</a>
+                <a href="../html/citas.html">Citas</a>
+            </div>
+            <div class="footer-col">
+                <h4>Redes Sociales</h4>
+                <div class="redes">
+                    <a href="#" class="red-social">Facebook</a>
+                    <a href="#" class="red-social">Instagram</a>
+                    <a href="#" class="red-social">WhatsApp</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Centro Diurno Vida Activa &mdash; San Jose, Costa Rica. Todos los derechos reservados.
+        </div>
+    </footer>
+    <script src="../js/index.js"></script>
 </body>
-</html>
