@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Inscripcion - Centro Diurno Vida Activa</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .hero {
+            background: linear-gradient(135deg, #003b73 0%, #005bb5 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.18) 1.5px, transparent 1.5px);
+            background-size: 16px 16px;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(255, 204, 77, 0.25);
+            color: #ffcc4d;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            margin: 0 0 0.7rem 0;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            opacity: 0.85;
+            font-size: 0.97rem;
+            margin: 0 auto;
+            max-width: 500px;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pasos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .paso {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem 1.2rem;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(0,59,115,0.08);
+            border: 1px solid #d8e4f0;
+        }
+
+        .paso-numero {
+            width: 38px;
+            height: 38px;
+            background: #003b73;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            margin: 0 auto 0.8rem;
+        }
+
+        .paso h4 {
+            color: #003b73;
+            margin: 0 0 0.3rem 0;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .paso p {
+            color: #5a7080;
+            font-size: 0.81rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .seccion-titulo {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: #003b73;
+            margin: 1.5rem 0 0.8rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid #e6f0ff;
+        }
+
+        .fila-doble {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .fila-doble { grid-template-columns: 1fr; }
+            .hero h2 { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Centro Diurno Vida Activa</h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="inscripcion.html">Inscripcion</a>
+            <a href="../php/actividades.php">Actividades</a>
+            <a href="citas.html">Citas</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <div class="hero-tag">Admisiones</div>
+        <h2>Formulario de Inscripcion</h2>
+        <p>Complete el formulario con los datos del adulto mayor. Su solicitud sera revisada por nuestro equipo en un plazo de 48 horas.</p>
+    </div>
+
+    <main>
+
+        <div class="pasos">
+            <div class="paso">
+                <div class="paso-numero">1</div>
+                <h4>Complete el formulario</h4>
+                <p>Ingrese los datos personales y medicos del adulto mayor</p>
+            </div>
+            <div class="paso">
+                <div class="paso-numero">2</div>
+                <h4>Revision del equipo</h4>
+                <p>Nuestro personal evaluara la solicitud en 48 horas</p>
+            </div>
+            <div class="paso">
+                <div class="paso-numero">3</div>
+                <h4>Confirmacion</h4>
+                <p>Recibira confirmacion y podra coordinar la primera visita</p>
+            </div>
+        </div>
+
+        <div class="bloque">
+            <h2>Datos de inscripcion</h2>
+
+            <?php if (isset($_GET["exito"])): ?>
+                <div class="alerta-exito">Solicitud enviada correctamente. Queda pendiente de revision por parte del equipo.</div>
+            <?php elseif (isset($_GET["error"])): ?>
+                <div class="alerta-error">Ocurrio un error al enviar. Verifique los datos e intente nuevamente.</div>
+            <?php endif; ?>
+
+            <form action="../php/procesar_inscripcion.php" method="POST">
+
+                <p class="seccion-titulo">Informacion personal</p>
+
+                <div class="campo">
+                    <label for="nombre_completo">Nombre completo *</label>
+                    <input type="text" id="nombre_completo" name="nombre_completo" placeholder="Nombre y apellidos del adulto mayor" required>
+                </div>
+
+                <div class="fila-doble">
+                    <div class="campo">
+                        <label for="cedula">Cedula *</label>
+                        <input type="text" id="cedula" name="cedula" placeholder="1-2345-6789" required>
+                    </div>
+                    <div class="campo">
+                        <label for="fecha_nacimiento">Fecha de nacimiento *</label>
+                        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label for="direccion">Direccion *</label>
+                    <input type="text" id="direccion" name="direccion" placeholder="Provincia, canton, distrito y sennas" required>
+                </div>
+
+                <p class="seccion-titulo">Informacion medica</p>
+
+                <div class="campo">
+                    <label for="condiciones_medicas">Condiciones medicas relevantes</label>
+                    <textarea id="condiciones_medicas" name="condiciones_medicas" rows="3" placeholder="Enfermedades, medicamentos, alergias u otras condiciones importantes (opcional)"></textarea>
+                </div>
+
+                <p class="seccion-titulo">Familiar responsable</p>
+
+                <div class="campo">
+                    <label for="contacto_familiar_id">ID del familiar que inscribe *</label>
+                    <input type="number" id="contacto_familiar_id" name="contacto_familiar_id" placeholder="Numero de ID del familiar registrado" required>
+                </div>
+
+                <button type="submit">Enviar solicitud de inscripcion</button>
+
+            </form>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Centro Diurno Vida Activa</h4>
+                <p>Brindamos cuidado profesional, calidez humana y bienestar integral para adultos mayores y sus familias en San Jose, Costa Rica.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <div class="info-item">San Jose, Costa Rica</div>
+                <div class="info-item">Tel: 2200-0000</div>
+                <div class="info-item">info@vidaactiva.cr</div>
+                <div class="info-item">Lun - Vie, 7:00am - 5:00pm</div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Navegacion</h4>
+                <a href="index.html">Inicio</a>
+                <a href="inscripcion.html">Inscripcion</a>
+                <a href="../php/actividades.php">Actividades</a>
+                <a href="citas.html">Citas</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Redes Sociales</h4>
+                <div class="redes">
+                    <a href="#" class="red-social">Facebook</a>
+                    <a href="#" class="red-social">Instagram</a>
+                    <a href="#" class="red-social">WhatsApp</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            &copy; 2026 Centro Diurno Vida Activa &mdash; San Jose, Costa Rica. Todos los derechos reservados.
+        </div>
+    </footer>
+
+</body>
+</html>
