@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Usuarios</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Centro Diurno Vida Activa</h1>
+        <nav>
+            <a href="login.html">Ir al Login</a>
+            <a href="index.html">Inicio</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="bloque">
+            <h2>Crear Cuenta Nueva</h2>
+
+            <form action="../php/procesar_registro.php" method="POST" id="form-registro">
+                <div class="campo">
+                    <label>Nombre Completo</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="campo">
+                    <label>Correo Electrónico</label>
+                    <input type="email" id="correo" name="correo" required>
+                </div>
+                <div class="campo">
+                    <label>Contraseña</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="campo">
+                    <label>Rol del Usuario</label>
+                    <select name="rol_id" required>
+                        <option value="2">Familiar</option>
+                        <option value="1">Administrador</option>
+                    </select>
+                </div>
+                <button type="submit">Registrar Usuario</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="../js/registro-validacion.js"></script>
+</body>
+</html>
