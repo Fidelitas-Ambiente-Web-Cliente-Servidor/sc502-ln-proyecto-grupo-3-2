@@ -405,3 +405,17 @@ td {
         font-size: 0.82rem;
     }
 }
+
+/* Boton de iniciar sesion en nav */
+nav a:last-child {
+    background-color: #ffcc4d;
+    color: #003b73;
+    font-weight: 700;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+}
+
+nav a:last-child:hover {
+    background-color: #ffda73;
+    color: #003b73;
+}

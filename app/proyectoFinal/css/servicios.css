@@ -1,28 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 :root {
-    --color-primary: #003b73;        /* Azul institucional */
-    --color-orange: #E65F2B;         /* Naranja de acento */
-    --color-orange-hover: #CB4E1E;   /* Naranja oscuro para hovers */
-    --color-bg-light: #f4f7fb;       /* Fondo general suave */
-    --color-text-dark: #333333;      /* Texto principal */
-    --color-text-muted: #666666;     /* Texto secundario */
+    --color-primary: #003b73;
+    --color-orange: #ffcc4d;
+    --color-orange-hover: #ffda73; 
+    --color-bg-light: #f4f7fb;
+    --color-text-dark: #333333;
+    --color-text-muted: #666666;
     --radius: 8px;
 }
 
-
-/* Fondo suave y tipografía legible */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f7fb;
     color: #333;
 }
 
-/* Encabezado con azul institucional */
 header {
-    background-color: #003b73;
+    background: linear-gradient(135deg, #003b73 0%, #005bb5 100%);
     color: white;
-    padding: 1rem 2rem;
+    padding: 1.1rem 2.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -33,7 +32,6 @@ header h1 {
     margin: 0;
 }
 
-/* Navegación */
 nav a {
     color: #ffcc4d;
     text-decoration: none;
@@ -45,7 +43,6 @@ nav a:hover {
     text-decoration: underline;
 }
 
-/* 1. SECCIÓN INTRODUCCIÓN  */
 main > section:first-of-type {
     background-color: #ffffff;
     text-align: center;
@@ -71,7 +68,6 @@ main > section:first-of-type p {
     margin: 0 auto;
 }
 
-/* BLOQUE DE PORTAFOLIO DE SERVICIOS*/
 main > section:nth-of-type(2) {
     background-color: #ffffff;
     border-radius: 10px;
@@ -80,7 +76,6 @@ main > section:nth-of-type(2) {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-/* Título de las modalidades */
 main > section:nth-of-type(2) h3 {
     color: var(--color-primary);
     font-size: 1.4rem;
@@ -95,7 +90,6 @@ main > section:nth-of-type(2) {
     flex-direction: column;
 }
 
-/* Contenedor flexible ocultando los <br> del código */
 main > section:nth-of-type(2) br {
     display: none;
 }
@@ -105,7 +99,6 @@ main > section:nth-of-type(2) br {
         display: block;
     }
     
-    /* Buscamos una estructura de dos columnas usando flex o grid implícito */
     main > section:nth-of-type(2) {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -113,7 +106,7 @@ main > section:nth-of-type(2) br {
     }
     
     main > section:nth-of-type(2) h3 {
-        grid-column: 1 / -1; /* El título ocupa todo el ancho */
+        grid-column: 1 / -1;
     }
 }
 
@@ -161,7 +154,6 @@ main article ul li {
     line-height: 1.4;
 }
 
-/* Enlaces de botones   */
 main article a {
     display: inline-block;
     width: 100%;
@@ -169,37 +161,32 @@ main article a {
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
     font-weight: bold;
-    color: #FFFFFF;
+    color: #003b73;
     background-color: var(--color-orange);
     border: 2px solid transparent;
     border-radius: var(--radius);
     text-align: center;
     text-decoration: none;
-    margin-top: auto; 
+    margin-top: auto;
     transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
 }
 
 main article a:hover {
     background-color: var(--color-orange-hover);
-    color: #FFFFFF;
+    color: #003b73;
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(230, 95, 43, 0.2);
+    box-shadow: 0 4px 12px rgba(255, 204, 77, 0.3);
 }
 
-.imagenServicio1, 
-.imagenServicio2,
-.imagenServicio3,
-.imagenServicio4 {
+.imagenServicio1, .imagenServicio2, .imagenServicio3, .imagenServicio4 {
     width: 100%;
-    height: 200px;        
-    object-fit: cover;     
-    border-radius: 6px;    
+    height: 200px;
+    object-fit: cover;
+    border-radius: 6px;
     margin-bottom: 1.2rem;
     display: block;
 }
 
-
-/*FOOTER */
 .footer {
     background: #002855;
     color: rgba(255,255,255,0.78);
@@ -216,7 +203,7 @@ main article a:hover {
 }
 
 .footer-col h4 {
-    color: var(--amarillo);
+    color: #ffcc4d;
     font-size: 0.85rem;
     margin: 0 0 1rem 0;
     font-weight: 700;
@@ -233,9 +220,7 @@ main article a:hover {
     line-height: 1.7;
 }
 
-.footer-col a:hover {
-    color: var(--amarillo);
-}
+.footer-col a:hover { color: #ffcc4d; }
 
 .footer-col .info-item {
     font-size: 0.85rem;
@@ -244,12 +229,7 @@ main article a:hover {
     line-height: 1.6;
 }
 
-.redes {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-    flex-wrap: wrap;
-}
+.redes { display: flex; gap: 0.5rem; margin-top: 0.5rem; flex-wrap: wrap; }
 
 .red-social {
     background: rgba(255,255,255,0.08);
@@ -264,9 +244,9 @@ main article a:hover {
 }
 
 .red-social:hover {
-    background: var(--amarillo);
-    color: var(--azul);
-    border-color: var(--amarillo);
+    background: #ffcc4d;
+    color: #003b73;
+    border-color: #ffcc4d;
 }
 
 .footer-bottom {
@@ -279,10 +259,6 @@ main article a:hover {
     margin: 0 auto;
 }
 
-
-/* --- SECCIÓN ACCESOS RÁPIDOS --- */
-
-/* Estilo base del contenedor del bloque */
 .bloque {
     background-color: #ffffff;
     border-radius: 10px;
@@ -292,7 +268,7 @@ main article a:hover {
 }
 
 .bloque h2 {
-    color: #003b73; 
+    color: #003b73;
     font-size: 1.4rem;
     margin-top: 0;
     margin-bottom: 1.5rem;
@@ -300,49 +276,85 @@ main article a:hover {
     padding-bottom: 0.5rem;
 }
 
-/* Estilizamos la lista para que actúe como un contenedor de tarjetas */
 .bloque ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
-    gap: 1rem; 
-    flex-wrap: wrap; 
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
-/* Cada elemento de la lista se convierte en una columna flexible */
 .bloque li {
     flex: 1;
-    min-width: 250px; 
+    min-width: 250px;
 }
 
-/* Estilo de los enlaces convertidos en tarjetas interactivas */
 .bloque li a {
     display: block;
     padding: 1.25rem 1.5rem;
-    background-color: #f8f9fa; 
-    color: #003b73; 
-    text-decoration: none; 
+    background-color: #f8f9fa;
+    color: #003b73;
+    text-decoration: none;
     font-weight: 600;
     font-size: 1.05rem;
-    border-left: 4px solid #E65F2B;
+    border-left: 4px solid #ffcc4d;
     border-radius: 6px;
     box-sizing: border-box;
-    
-    /* Transición suave para los efectos visuales */
     transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Efectos al pasar el mouse por encima de cada acceso rápido */
 .bloque li a:hover {
     background-color: #ffffff;
-    color: #E65F2B; 
-    transform: translateY(-2px); 
-    box-shadow: 0 6px 12px rgba(0, 59, 115, 0.08); 
+    color: #003b73;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 59, 115, 0.08);
 }
 
-/* Efecto activo al hacer clic */
 .bloque li a:active {
     transform: translateY(0);
     box-shadow: 0 2px 4px rgba(0, 59, 115, 0.04);
+}
+/* Clases del header */
+.header {
+    background: linear-gradient(135deg, #003b73 0%, #005bb5 100%);
+    color: white;
+    padding: 1.1rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 59, 115, 0.25);
+}
+
+.header__brand { display: flex; align-items: center; }
+.header__title { font-size: 1.3rem; font-weight: 700; color: white; }
+
+.nav { display: flex; align-items: center; gap: 0.3rem; }
+
+.nav__link {
+    color: rgba(255,255,255,0.88);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.nav__link:hover {
+    background-color: rgba(255, 204, 77, 0.18);
+    color: #ffcc4d;
+    text-decoration: none;
+}
+
+.nav__link--cta {
+    background-color: #ffcc4d;
+    color: #003b73;
+    font-weight: 700;
+    padding: 0.4rem 1rem;
+}
+
+.nav__link--cta:hover {
+    background-color: #ffda73;
+    color: #003b73;
 }

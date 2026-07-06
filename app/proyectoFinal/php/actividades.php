@@ -17,7 +17,7 @@ try {
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Actividades - Centro Diurno Vida Activa</title>
+    <title>Actividades - Vida Activa</title>
     <link rel="stylesheet" href="../css/style.css">
     <style>
         .hero {
@@ -95,12 +95,13 @@ try {
 <body>
 
     <header>
-        <h1>Centro Diurno Vida Activa</h1>
+        <h1>Vida Activa</h1>
         <nav>
             <a href="../html/index.html">Inicio</a>
             <a href="../html/inscripcion.html">Inscripcion</a>
             <a href="actividades.php">Actividades</a>
             <a href="../html/citas.html">Citas</a>
+            <a href="../html/login.html">Iniciar sesion</a>
         </nav>
     </header>
 

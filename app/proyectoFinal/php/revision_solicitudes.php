@@ -162,6 +162,7 @@ try {
             <a href="../html/inscripcion.html">Inscripcion</a>
             <a href="actividades.php">Actividades</a>
             <a href="../html/citas.html">Citas</a>
+            <a href="../html/login.html">Iniciar sesion</a>
         </nav>
     </header>
 
