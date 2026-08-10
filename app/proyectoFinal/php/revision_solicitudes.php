@@ -156,7 +156,7 @@ try {
 <body>
 
     <header>
-        <h1>Centro Diurno Vida Activa</h1>
+        <h1>Vida Activa</h1>
         <nav>
             <a href="../html/index.html">Inicio</a>
             <a href="../html/inscripcion.html">Inscripcion</a>
