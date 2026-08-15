@@ -10,57 +10,78 @@
         <div class="header__brand">
             <span class="header__title">Vida Activa</span>
         </div>
+
         <nav class="nav" id="mainNav">
             <a class="nav__link" href="index.html">Inicio</a>
             <a class="nav__link" href="informacion.html">Información de centros de cuido</a>
             <a class="nav__link" href="servicios.html">Servicios y requisitos</a>
             <a class="nav__link" href="contacto.html">Contacto</a>
-            <a class="nav__link" href="inscripcion.html">Inscripcion</a>
+            <a class="nav__link" id="menu-inscripcion" href="inscripcion.html">Inscripción</a>
             <a class="nav__link" href="../php/actividades.php">Actividades</a>
-            <a class="nav__link nav__link--cta" href="login.html">Iniciar sesión</a>
+            <a class="nav__link nav__link--cta" id="enlace-login" href="login.html">Iniciar sesión</a>
         </nav>
     </header>
 
     <main>
- <section id="inicio" class="hero">
+        <section id="inicio" class="hero">
             <div class="hero__content">
-                <span class="hero__eyebrow">Red de centros diurnos para el cuidado de personas adultas mayores</span>
-                <h1 class="hero__title">Cuido, compañía y actividad,<br>todos los días.</h1>
+                <span class="hero__eyebrow">
+                    Red de centros diurnos para el cuidado de personas adultas mayores
+                </span>
+
+                <h1 class="hero__title">
+                    Cuido, compañía y actividad,<br>todos los días.
+                </h1>
+
                 <p class="hero__text">
                     Vida Activa acompaña a su familiar adulto mayor con atención,
                     programas de actividades y comunicación constante con el
                     personal de los centros de cuido, sin necesidad de llamadas ni trámites
                     presenciales; asegurando el bienestar de la población adulta mayor.
                 </p>
+
                 <div class="hero__actions">
                     <div class="hero__figure" id="contenido"></div>
                     <a href="servicios.html" class="btn btn--primary">Ver servicios</a>
                     <a href="contacto.html" class="btn btn--ghost">Contactar al centro</a>
-                    
                 </div>
             </div>
         </section>
 
         <section class="bloque">
             <h2>Accesos rápidos</h2>
+
             <ul>
-                <li><a href="citas.html">Agendamiento y visualización de citas</a></li>
-                <li><a href="admin-dashboard.html">Dashboard administrativo de citas</a></li>
-                <li><a href="inscripcion.html">Inscripción de adulto mayor</a></li>
-                <li><a href="../php/actividades.php">Cronograma de actividades</a></li>
-                <li><a href="../php/revision_solicitudes.php">Revisión de solicitudes</a></li>
+                <li id="acceso-citas">
+                    <a href="citas.html">Agendamiento y visualización de citas</a>
+                </li>
+
+                <li id="acceso-dashboard">
+                    <a href="admin-dashboard.html">Dashboard administrativo de citas</a>
+                </li>
+
+                <li id="acceso-inscripcion">
+                    <a href="inscripcion.html">Inscripción de adulto mayor</a>
+                </li>
+
+                <li id="acceso-actividades">
+                    <a href="../php/actividades.php">Cronograma de actividades</a>
+                </li>
+
+                <li id="acceso-solicitudes">
+                    <a href="../php/revision_solicitudes.php">Revisión de solicitudes</a>
+                </li>
             </ul>
         </section>
-        
     </main>
-    
 
-<footer class="footer">
+    <footer class="footer">
         <div class="footer-grid">
             <div class="footer-col">
                 <h4>Centro Diurno Vida Activa</h4>
                 <p>Brindamos cuidado profesional, calidez humana y bienestar integral para adultos mayores y sus familias.</p>
             </div>
+
             <div class="footer-col">
                 <h4>Contacto</h4>
                 <div class="info-item">San Jose, Costa Rica</div>
@@ -68,13 +89,15 @@
                 <div class="info-item">info@vidaactiva.cr</div>
                 <div class="info-item">Lun - Vie, 7:00am - 5:00pm</div>
             </div>
+
             <div class="footer-col">
                 <h4>Navegacion</h4>
-                <a href="../html/index.html">Inicio</a>
-                <a href="../html/inscripcion.html">Inscripcion</a>
-                <a href="actividades.php">Actividades</a>
-                <a href="../html/citas.html">Citas</a>
+                <a href="index.html">Inicio</a>
+                <a href="inscripcion.html">Inscripción</a>
+                <a href="../php/actividades.php">Actividades</a>
+                <a href="citas.html">Citas</a>
             </div>
+
             <div class="footer-col">
                 <h4>Redes Sociales</h4>
                 <div class="redes">
@@ -84,9 +107,12 @@
                 </div>
             </div>
         </div>
+
         <div class="footer-bottom">
             &copy; 2026 Centro Diurno Vida Activa &mdash; San Jose, Costa Rica. Todos los derechos reservados.
         </div>
-    </footer>
+    </footer>   
+
     <script src="../js/index.js"></script>
 </body>
+</html>

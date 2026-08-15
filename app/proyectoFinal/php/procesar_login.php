@@ -1,31 +1,50 @@
 <?php
-include 'conexion.php';
+require_once 'conexion.php';
+
 session_start();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $correo = $_POST['correo'];
-    $password = $_POST['password'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $correo = trim($_POST['correo'] ?? '');
+    $password = $_POST['password'] ?? '';
 
-    $sql = "SELECT id, nombre_completo, rol_id FROM usuarios WHERE correo = '$correo' AND password = '$password'";
-    $resultado = $conexion->query($sql);
+    try {
+        $sql = 'SELECT id, nombre, correo, password, rol_id
+                FROM usuarios
+                WHERE correo = :correo';
 
-    if ($resultado->num_rows == 1) {
-        $usuario = $resultado->fetch_assoc();
-        
-        $_SESSION['usuario_id'] = $usuario['id'];
-        $_SESSION['usuario_nombre'] = $usuario['nombre_completo'];
-        $_SESSION['usuario_rol'] = $usuario['rol_id'];
+        $sentencia = $conexion->prepare($sql);
 
-        // Redirecciona saliendo a html/ según el rol
-        if ($_SESSION['usuario_rol'] == 1) {
-            header("Location: ../html/admin-dashboard.html");
-        } else {
-            header("Location: ../html/citas.html");
+        $sentencia->execute([
+            ':correo' => $correo
+        ]);
+
+        $usuario = $sentencia->fetch(PDO::FETCH_ASSOC);
+
+        if ($usuario && password_verify($password, $usuario['password'])) {
+            session_regenerate_id(true);
+
+            $_SESSION['usuario_id'] = $usuario['id'];
+            $_SESSION['usuario_nombre'] = $usuario['nombre'];
+            $_SESSION['usuario_rol'] = $usuario['rol_id'];
+
+            $nombre = htmlspecialchars($usuario['nombre'], ENT_QUOTES, 'UTF-8');
+            $rol = (int) $usuario['rol_id'];
+
+            echo "<script>
+                    localStorage.setItem('usuario_nombre', '$nombre');
+                    localStorage.setItem('usuario_rol', '$rol');
+                    window.location.href = '../html/index.html';
+                  </script>";
+            exit;
         }
-        exit();
-    } else {
+
         echo "<script>
                 alert('Correo o contraseña incorrectos.');
+                window.history.back();
+              </script>";
+    } catch (PDOException $e) {
+        echo "<script>
+                alert('Ocurrió un error al iniciar sesión.');
                 window.history.back();
               </script>";
     }
