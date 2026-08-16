@@ -10,45 +10,52 @@
         <h1>Agendamiento de citas</h1>
         <nav>
             <a href="index.html">Inicio</a>
-            <a href="admin-dashboard.php">Dashboard administrativo</a>
+            <a href="../php/actividades.php">Ver actividades</a>
         </nav>
     </header>
 
     <main>
-        <!-- Formulario para agendar cita -->
         <section class="bloque">
             <h2>Nueva cita</h2>
- <form action="../php/citas.php" method="POST">
-    <div class="campo">
-        <label for="adulto_id">ID del adulto mayor</label>
-        <input type="number" id="adulto_id" name="adulto_id" required>
-    </div>
 
-    <div class="campo">
-        <label for="familiar_id">ID del familiar</label>
-        <input type="number" id="familiar_id" name="familiar_id" required>
-    </div>
+            <form id="form-cita" action="../php/citas.php" method="POST">
+                <div class="campo">
+                    <label for="adulto_id">Adulto mayor</label>
 
-    <div class="campo">
-        <label for="fecha">Fecha</label>
-        <input type="date" id="fecha" name="fecha" required>
-    </div>
+                    <select id="adulto_id" name="adulto_id" required>
+                        <option value="">Cargando adultos mayores...</option>
+                    </select>
+                </div>
 
-    <div class="campo">
-        <label for="hora">Hora</label>
-        <input type="time" id="hora" name="hora" required>
-    </div>
+                <div class="campo">
+                    <label for="fecha">Fecha</label>
+                    <input type="date" id="fecha" name="fecha" required>
+                </div>
 
-    <div class="campo">
-        <label for="motivo">Motivo de la visita</label>
-        <textarea id="motivo" name="motivo" rows="3" required></textarea>
-    </div>
+                <div class="campo">
+                    <label for="hora">Hora</label>
+                    <input type="time" id="hora" name="hora" required>
+                </div>
 
-    <button type="submit">Agendar cita</button>
-</form>
+                <div class="campo">
+                    <label for="motivo">Motivo de la visita</label>
+                    <textarea id="motivo" name="motivo" rows="3" required></textarea>
+                </div>
+
+                <button type="submit">Agendar cita</button>
+            </form>
         </section>
 
-        
+        <section class="bloque">
+            <h2>Mis citas</h2>
+
+            <div id="contenedorMisCitas">
+                <p>Cargando citas...</p>
+            </div>
+        </section>
     </main>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="../js/citas.js"></script>
 </body>
 </html>

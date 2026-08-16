@@ -162,7 +162,7 @@ try {
             <a href="../html/inscripcion.html">Inscripcion</a>
             <a href="actividades.php">Actividades</a>
             <a href="../html/citas.html">Citas</a>
-            <a href="../html/login.html">Iniciar sesion</a>
+            <a id="enlace-sesion" href="login.html">Iniciar sesión</a>
         </nav>
     </header>
 
@@ -262,6 +262,6 @@ try {
             &copy; 2026 Centro Diurno Vida Activa &mdash; San Jose, Costa Rica. Todos los derechos reservados.
         </div>
     </footer>
-
+<script src="../js/sesion.js"></script>
 </body>
 </html>

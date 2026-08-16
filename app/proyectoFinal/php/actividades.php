@@ -1,15 +1,23 @@
 <?php
+session_start();
+
 require_once "conexion.php";
 
+$esAdmin = isset($_SESSION["usuario_rol"]) &&
+           (int) $_SESSION["usuario_rol"] === 2;
+
 try {
-    $sql = "SELECT id, titulo, descripcion, fecha, hora, tipo, estado
+    $sql = "SELECT id, titulo, descripcion, fecha, hora, tipo
             FROM actividades
-            ORDER BY fecha ASC";
+            ORDER BY fecha ASC, hora ASC";
+
     $stmt = $conexion->prepare($sql);
     $stmt->execute();
+
     $actividades = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 } catch (PDOException $e) {
-    die("Error al consultar actividades: " . $e->getMessage());
+    $actividades = [];
 }
 ?>
 
@@ -19,6 +27,7 @@ try {
     <meta charset="UTF-8">
     <title>Actividades - Vida Activa</title>
     <link rel="stylesheet" href="../css/style.css">
+
     <style>
         .hero {
             background: linear-gradient(135deg, #003b73 0%, #005bb5 100%);
@@ -30,10 +39,17 @@ try {
         }
 
         .hero::before {
-            content: '';
+            content: "";
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: radial-gradient(circle, rgba(255,255,255,0.18) 1.5px, transparent 1.5px);
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(
+                circle,
+                rgba(255, 255, 255, 0.18) 1.5px,
+                transparent 1.5px
+            );
             background-size: 16px 16px;
         }
 
@@ -88,57 +104,84 @@ try {
         }
 
         @media (max-width: 600px) {
-            .fila-doble { grid-template-columns: 1fr; }
+            .fila-doble {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
-<body>
 
+<body>
     <header>
         <h1>Vida Activa</h1>
+
         <nav>
             <a href="../html/index.html">Inicio</a>
-            <a href="../html/inscripcion.html">Inscripcion</a>
+            
             <a href="actividades.php">Actividades</a>
-            <a href="../html/citas.html">Citas</a>
-            <a href="../html/login.html">Iniciar sesion</a>
+            
+            <a id="enlace-sesion" href="login.html">Iniciar sesión</a>
         </nav>
     </header>
 
     <div class="hero">
         <div class="hero-tag">Cronograma</div>
         <h2>Actividades del Centro</h2>
-        <p>Consulte las actividades programadas y agregue nuevas al cronograma del centro diurno.</p>
+        <p>
+            Consulte las actividades programadas para el centro diurno.
+        </p>
     </div>
 
     <main>
-
         <div class="bloque">
             <h2>Cronograma de Actividades</h2>
 
-            <?php if (count($actividades) == 0) { ?>
-                <p style="color: #5a7080;">No hay actividades programadas por el momento.</p>
+            <?php if (count($actividades) === 0) { ?>
+                <p style="color: #5a7080;">
+                    No hay actividades programadas por el momento.
+                </p>
             <?php } else { ?>
                 <table>
                     <tr>
-                        <th>Titulo</th>
-                        <th>Descripcion</th>
+                        <th>Título</th>
+                        <th>Descripción</th>
                         <th>Fecha</th>
                         <th>Hora</th>
                         <th>Tipo</th>
-                        <th>Estado</th>
                     </tr>
+
                     <?php foreach ($actividades as $actividad) { ?>
                         <tr>
-                            <td><?php echo $actividad["titulo"]; ?></td>
-                            <td><?php echo $actividad["descripcion"]; ?></td>
-                            <td><?php echo $actividad["fecha"]; ?></td>
-                            <td><?php echo $actividad["hora"]; ?></td>
-                            <td><?php echo $actividad["tipo"]; ?></td>
                             <td>
-                                <span class="badge <?php echo $actividad['estado']; ?>">
-                                    <?php echo ucfirst($actividad["estado"]); ?>
-                                </span>
+                                <?php
+                                echo htmlspecialchars(
+                                    $actividad["titulo"],
+                                    ENT_QUOTES,
+                                    "UTF-8"
+                                );
+                                ?>
+                            </td>
+
+                            <td>
+                                <?php
+                                echo htmlspecialchars(
+                                    $actividad["descripcion"] ?? "",
+                                    ENT_QUOTES,
+                                    "UTF-8"
+                                );
+                                ?>
+                            </td>
+
+                            <td>
+                                <?php echo htmlspecialchars($actividad["fecha"]); ?>
+                            </td>
+
+                            <td>
+                                <?php echo htmlspecialchars($actividad["hora"]); ?>
+                            </td>
+
+                            <td>
+                                <?php echo htmlspecialchars(ucfirst($actividad["tipo"])); ?>
                             </td>
                         </tr>
                     <?php } ?>
@@ -146,85 +189,114 @@ try {
             <?php } ?>
         </div>
 
-        <div class="bloque">
-            <h2>Agregar Nueva Actividad</h2>
+        <?php if ($esAdmin) { ?>
+            <div class="bloque">
+                <h2>Agregar Nueva Actividad</h2>
 
-            <?php if (isset($_GET["exito"])): ?>
-                <div class="alerta-exito">Actividad agregada correctamente al cronograma.</div>
-            <?php elseif (isset($_GET["error"])): ?>
-                <div class="alerta-error">Ocurrio un error. Verifique los datos e intente nuevamente.</div>
-            <?php endif; ?>
-
-            <form action="procesar_actividad.php" method="POST">
-
-                <p class="seccion-titulo">Informacion de la actividad</p>
-
-                <div class="campo">
-                    <label for="titulo">Titulo *</label>
-                    <input type="text" id="titulo" name="titulo" placeholder="Nombre de la actividad" required>
-                </div>
-
-                <div class="campo">
-                    <label for="descripcion">Descripcion</label>
-                    <textarea id="descripcion" name="descripcion" rows="3" placeholder="Descripcion de la actividad (opcional)"></textarea>
-                </div>
-
-                <div class="fila-doble">
-                    <div class="campo">
-                        <label for="fecha">Fecha *</label>
-                        <input type="date" id="fecha" name="fecha" required>
+                <?php if (isset($_GET["exito"])) { ?>
+                    <div class="alerta-exito">
+                        Actividad agregada correctamente al cronograma.
                     </div>
-                    <div class="campo">
-                        <label for="hora">Hora *</label>
-                        <input type="time" id="hora" name="hora" required>
-                    </div>
-                </div>
+                <?php } ?>
 
-                <div class="fila-doble">
+                <?php if (isset($_GET["error"])) { ?>
+                    <div class="alerta-error">
+                        Ocurrió un error. Verifique los datos e intente nuevamente.
+                    </div>
+                <?php } ?>
+
+                <form action="procesar_actividad.php" method="POST">
+                    <p class="seccion-titulo">Información de la actividad</p>
+
                     <div class="campo">
-                        <label for="tipo">Tipo de actividad</label>
-                        <select id="tipo" name="tipo">
+                        <label for="titulo">Título *</label>
+                        <input
+                            type="text"
+                            id="titulo"
+                            name="titulo"
+                            placeholder="Nombre de la actividad"
+                            required
+                        >
+                    </div>
+
+                    <div class="campo">
+                        <label for="descripcion">Descripción</label>
+                        <textarea
+                            id="descripcion"
+                            name="descripcion"
+                            rows="3"
+                            placeholder="Descripción de la actividad (opcional)"
+                        ></textarea>
+                    </div>
+
+                    <div class="fila-doble">
+                        <div class="campo">
+                            <label for="fecha">Fecha *</label>
+                            <input
+                                type="date"
+                                id="fecha"
+                                name="fecha"
+                                required
+                            >
+                        </div>
+
+                        <div class="campo">
+                            <label for="hora">Hora *</label>
+                            <input
+                                type="time"
+                                id="hora"
+                                name="hora"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <div class="campo">
+                        <label for="tipo">Tipo de actividad *</label>
+
+                        <select id="tipo" name="tipo" required>
                             <option value="recreativa">Recreativa</option>
-                            <option value="terapeutica">Terapeutica</option>
+                            <option value="terapeutica">Terapéutica</option>
                             <option value="social">Social</option>
                             <option value="educativa">Educativa</option>
                         </select>
                     </div>
-                    <div class="campo">
-                        <label for="creado_por">ID del administrador *</label>
-                        <input type="number" id="creado_por" name="creado_por" placeholder="ID del admin" required>
-                    </div>
-                </div>
 
-                <button type="submit">Agregar Actividad</button>
-
-            </form>
-        </div>
-
+                    <button type="submit">Agregar actividad</button>
+                </form>
+            </div>
+        <?php } ?>
     </main>
 
     <footer class="footer">
         <div class="footer-grid">
             <div class="footer-col">
                 <h4>Centro Diurno Vida Activa</h4>
-                <p>Brindamos cuidado profesional, calidez humana y bienestar integral para adultos mayores y sus familias.</p>
+                <p>
+                    Brindamos cuidado profesional, calidez humana y bienestar
+                    integral para adultos mayores y sus familias.
+                </p>
             </div>
+
             <div class="footer-col">
                 <h4>Contacto</h4>
-                <div class="info-item">San Jose, Costa Rica</div>
+                <div class="info-item">San José, Costa Rica</div>
                 <div class="info-item">Tel: 2200-0000</div>
                 <div class="info-item">info@vidaactiva.cr</div>
                 <div class="info-item">Lun - Vie, 7:00am - 5:00pm</div>
             </div>
+
             <div class="footer-col">
-                <h4>Navegacion</h4>
+                <h4>Navegación</h4>
                 <a href="../html/index.html">Inicio</a>
-                <a href="../html/inscripcion.html">Inscripcion</a>
+                <a href="../html/inscripcion.html">Inscripción</a>
                 <a href="actividades.php">Actividades</a>
                 <a href="../html/citas.html">Citas</a>
             </div>
+
             <div class="footer-col">
-                <h4>Redes Sociales</h4>
+                <h4>Redes sociales</h4>
+
                 <div class="redes">
                     <a href="#" class="red-social">Facebook</a>
                     <a href="#" class="red-social">Instagram</a>
@@ -232,10 +304,12 @@ try {
                 </div>
             </div>
         </div>
+
         <div class="footer-bottom">
-            &copy; 2026 Centro Diurno Vida Activa &mdash; San Jose, Costa Rica. Todos los derechos reservados.
+            &copy; 2026 Centro Diurno Vida Activa — San José, Costa Rica.
+            Todos los derechos reservados.
         </div>
     </footer>
-
+    <script src="../js/sesion.js"></script>
 </body>
 </html>
