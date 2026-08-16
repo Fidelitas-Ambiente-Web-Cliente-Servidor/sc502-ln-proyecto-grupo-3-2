@@ -100,11 +100,15 @@ CREATE TABLE citas (
 -- =========================
 -- 7. Tabla de contactos del centro (público)
 -- =========================
+
 CREATE TABLE contactos_centro (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    tipo VARCHAR(50),
-    valor VARCHAR(100),
-    descripcion VARCHAR(100)
+    nombre VARCHAR(100) NOT NULL,
+    correo VARCHAR(150) NOT NULL,
+    telefono VARCHAR(30) NOT NULL,
+    mensaje TEXT NOT NULL,
+    fecha_creacion DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    estado VARCHAR(20) NOT NULL DEFAULT 'pendiente'
 );
 
 -- =========================

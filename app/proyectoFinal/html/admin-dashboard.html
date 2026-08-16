@@ -2,48 +2,215 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard administrativo</title>
     <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        .estado {
+            display: inline-block;
+            padding: 0.25rem 0.65rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-transform: capitalize;
+        }
+
+        .pendiente {
+            color: #7a4d00;
+            background-color: #fff3cd;
+        }
+
+        .confirmada {
+            color: #084298;
+            background-color: #cfe2ff;
+        }
+
+        .realizada,
+        .atendida {
+            color: #0f5132;
+            background-color: #d1e7dd;
+        }
+
+        .cancelada {
+            color: #842029;
+            background-color: #f8d7da;
+        }
+
+        .tabla-contenedor {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .mensaje-consulta {
+            min-width: 220px;
+            max-width: 300px;
+            white-space: normal;
+            overflow-wrap: break-word;
+        }
+
+        .acciones {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            min-width: 190px;
+        }
+
+        .btn-accion {
+            border: none;
+            border-radius: 5px;
+            padding: 0.42rem 0.65rem;
+            color: #ffffff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn-confirmar {
+            background-color: #0d6efd;
+        }
+
+        .btn-realizada,
+        .btn-atender {
+            background-color: #198754;
+        }
+
+        .btn-cancelar {
+            background-color: #dc3545;
+        }
+
+        .btn-pendiente {
+            background-color: #a36d00;
+        }
+
+        .btn-accion:hover {
+            opacity: 0.85;
+        }
+
+        .procesada {
+            color: #6c757d;
+            font-weight: bold;
+        }
+    </style>
 </head>
+
 <body>
     <header>
-        <h1>Dashboard administrativo - Citas</h1>
+        <h1>Dashboard administrativo</h1>
+
         <nav>
             <a href="index.html">Inicio</a>
             <a href="citas.html">Agendar citas</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="../php/actividades.php">Actividades</a>
+            <a href="../php/cerrar_sesion.php">Cerrar sesión</a>
         </nav>
     </header>
 
     <main>
         <section class="bloque resumen">
-            <h2>Resumen</h2>
+            <h2>Resumen de citas</h2>
             <p>Total de citas: <span id="total-citas">0</span></p>
             <p>Pendientes: <span id="pendientes">0</span></p>
             <p>Confirmadas: <span id="confirmadas">0</span></p>
+            <p>Realizadas: <span id="realizadas">0</span></p>
             <p>Canceladas: <span id="canceladas">0</span></p>
         </section>
 
         <section class="bloque">
             <h2>Control de citas</h2>
-            <table id="tabla-citas">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Adulto mayor</th>
-                        <th>Familiar</th>
-                        <th>Fecha</th>
-                        <th>Hora</th>
-                        <th>Motivo</th>
-                        <th>Estado</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- JS rellenará aquí -->
-                </tbody>
-            </table>
+
+            <div class="tabla-contenedor">
+                <table id="tabla-citas">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Adulto mayor</th>
+                            <th>Familiar</th>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                            <th>Motivo</th>
+                            <th>Estado</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="bloque">
+            <h2>Consultas de contacto</h2>
+
+            <p>
+                Total: <span id="total-consultas">0</span>
+                | Pendientes: <span id="consultas-pendientes">0</span>
+                | Atendidas: <span id="consultas-atendidas">0</span>
+            </p>
+
+            <div class="tabla-contenedor">
+                <table id="tabla-consultas">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                            <th>Teléfono</th>
+                            <th>Mensaje</th>
+                            <th>Fecha</th>
+                            <th>Estado</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+
+                    <tbody></tbody>
+                </table>
+            </div>
         </section>
     </main>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Centro Diurno Vida Activa</h4>
+                <p>
+                    Brindamos cuidado profesional, calidez humana y bienestar
+                    integral para adultos mayores y sus familias.
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <div class="info-item">San José, Costa Rica</div>
+                <div class="info-item">Tel: 2200-0000</div>
+                <div class="info-item">info@vidaactiva.cr</div>
+                <div class="info-item">Lun - Vie, 7:00 a.m. - 5:00 p.m.</div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Navegación</h4>
+                <a href="index.html">Inicio</a>
+                <a href="inscripcion.html">Inscripción</a>
+                <a href="../php/actividades.php">Actividades</a>
+                <a href="citas.html">Citas</a>
+                <a href="contacto.html">Contacto</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Redes sociales</h4>
+                <div class="redes">
+                    <a href="#" class="red-social">Facebook</a>
+                    <a href="#" class="red-social">Instagram</a>
+                    <a href="#" class="red-social">WhatsApp</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            &copy; 2026 Centro Diurno Vida Activa — San José, Costa Rica.
+            Todos los derechos reservados.
+        </div>
+    </footer>
 
     <script src="../js/admin-dashboard.js"></script>
 </body>

@@ -166,11 +166,13 @@
         <div class="bloque">
             <h2>Datos de inscripcion</h2>
 
-            <?php if (isset($_GET["exito"])): ?>
-                <div class="alerta-exito">Solicitud enviada correctamente. Queda pendiente de revision por parte del equipo.</div>
-            <?php elseif (isset($_GET["error"])): ?>
-                <div class="alerta-error">Ocurrio un error al enviar. Verifique los datos e intente nuevamente.</div>
-            <?php endif; ?>
+<div id="mensaje-exito" class="alerta-exito" hidden>
+    Solicitud enviada correctamente. Queda pendiente de revisión por parte del equipo.
+</div>
+
+<div id="mensaje-error" class="alerta-error" hidden>
+    Ocurrió un error al enviar. Verifique los datos e intente nuevamente.
+</div>
 
             <form action="../php/procesar_inscripcion.php" method="POST">
 
@@ -250,5 +252,19 @@
         </div>
     </footer>
 <script src="../js/sesion.js"></script>
+<script>
+    const parametros = new URLSearchParams(window.location.search);
+
+    const mensajeExito = document.getElementById("mensaje-exito");
+    const mensajeError = document.getElementById("mensaje-error");
+
+    if (parametros.get("exito") === "1") {
+        mensajeExito.hidden = false;
+    }
+
+    if (parametros.get("error") === "1") {
+        mensajeError.hidden = false;
+    }
+</script>
 </body>
 </html>
