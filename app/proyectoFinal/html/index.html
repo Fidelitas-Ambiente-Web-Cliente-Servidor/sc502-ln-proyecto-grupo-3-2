@@ -19,11 +19,7 @@
             <a class="nav__link" href="servicios.html">Servicios y requisitos</a>
             <a class="nav__link" href="contacto.html">Contacto</a>
 
-            <a
-                class="nav__link"
-                id="menu-inscripcion"
-                href="inscripcion.html"
-            >
+            <a class="nav__link" id="menu-inscripcion" href="inscripcion.html">
                 Inscripción
             </a>
 
@@ -31,11 +27,7 @@
                 Actividades
             </a>
 
-            <a
-                class="nav__link nav__link--cta"
-                id="enlace-login"
-                href="login.html"
-            >
+            <a class="nav__link nav__link--cta" id="enlace-login" href="login.html">
                 Iniciar sesión
             </a>
         </nav>
@@ -62,9 +54,11 @@
 
                 <div class="hero__actions">
                     <div class="hero__figure" id="contenido"></div>
+
                     <a href="servicios.html" class="btn btn--primary">
                         Ver servicios
                     </a>
+
                     <a href="contacto.html" class="btn btn--ghost">
                         Contactar al centro
                     </a>
@@ -132,7 +126,6 @@
                 <a href="index.html">Inicio</a>
                 <a href="informacion.html">Información</a>
                 <a href="servicios.html">Servicios</a>
-                               
                 <a href="contacto.html">Contacto</a>
             </div>
 
@@ -153,55 +146,5 @@
     </footer>
 
     <script src="../js/index.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const accesoDashboard = document.getElementById("acceso-dashboard");
-        const accesoInscripcion = document.getElementById("acceso-inscripcion");
-        const accesoSolicitudes = document.getElementById("acceso-solicitudes");
-
-        const usuarioGuardado = localStorage.getItem("usuario");
-        const rolGuardado = localStorage.getItem("rol");
-
-        let esAdministrador = false;
-
-        if (
-            rolGuardado === "admin" ||
-            rolGuardado === "administrador" ||
-            rolGuardado === "2"
-        ) {
-            esAdministrador = true;
-        }
-
-        if (usuarioGuardado) {
-            try {
-                const usuario = JSON.parse(usuarioGuardado);
-
-                if (
-                    usuario.rol === "admin" ||
-                    usuario.rol === "administrador" ||
-                    usuario.rol_id === 2 ||
-                    usuario.id_rol === 2 ||
-                    usuario.rol_id === "2" ||
-                    usuario.id_rol === "2"
-                ) {
-                    esAdministrador = true;
-                }
-            } catch (error) {
-                console.log("No se pudo leer la información del usuario.");
-            }
-        }
-
-        if (!esAdministrador) {
-            accesoDashboard.style.display = "none";
-
-            accesoInscripcion.style.display = "none";
-
-            const enlaceSolicitudes = accesoSolicitudes.querySelector("a");
-
-            enlaceSolicitudes.href = "inscripcion.html";
-            enlaceSolicitudes.textContent = "Inscripción de adulto mayor";
-        }
-    });
-</script>
 </body>
 </html>

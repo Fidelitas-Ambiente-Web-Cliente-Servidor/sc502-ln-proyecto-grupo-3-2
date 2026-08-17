@@ -90,6 +90,20 @@
             color: #6c757d;
             font-weight: bold;
         }
+
+        .btn-usuarios {
+            display: inline-block;
+            padding: 0.7rem 1rem;
+            border-radius: 5px;
+            background-color: #0d6efd;
+            color: #ffffff;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .btn-usuarios:hover {
+            opacity: 0.85;
+        }
     </style>
 </head>
 
@@ -102,6 +116,7 @@
             <a href="citas.html">Agendar citas</a>
             <a href="contacto.html">Contacto</a>
             <a href="../php/actividades.php">Actividades</a>
+            <a href="../php/usuarios.php">Administrar usuarios</a>
             <a href="../php/cerrar_sesion.php">Cerrar sesión</a>
         </nav>
     </header>
@@ -114,6 +129,18 @@
             <p>Confirmadas: <span id="confirmadas">0</span></p>
             <p>Realizadas: <span id="realizadas">0</span></p>
             <p>Canceladas: <span id="canceladas">0</span></p>
+        </section>
+
+        <section class="bloque">
+            <h2>Administración de usuarios</h2>
+            <p>
+                Desde este apartado se pueden consultar, registrar, editar y eliminar
+                las cuentas de familiares y administradores del sistema.
+            </p>
+
+            <a class="btn-usuarios" href="../php/usuarios.php">
+                Gestionar usuarios
+            </a>
         </section>
 
         <section class="bloque">
