@@ -38,11 +38,11 @@ enlaceLogin.textContent = "Cerrar sesión";
 enlaceLogin.href = "../php/cerrar_sesion.php";
 
     // Opciones para familiar: rol 1
-    if (rolUsuario === "1") {
-        accesoCitas.style.display = "block";
-        accesoActividades.style.display = "block";
-        accesoSolicitudes.style.display = "block";
-    }
+if (rolUsuario === "1") {
+    accesoCitas.style.display = "block";
+    accesoInscripcion.style.display = "block";
+    accesoActividades.style.display = "block";
+}
 
     // Opciones para administrador: rol 2
     if (rolUsuario === "2") {
